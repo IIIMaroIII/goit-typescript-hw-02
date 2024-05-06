@@ -1,15 +1,8 @@
-import { useEffect } from 'react';
-import css from './imageCard.module.css';
+import { FC } from "react";
+import css from "./imageCard.module.css";
+import { ImageCardProps } from "./ImageCard.types";
 
-const ImageCard = ({
-  onModalOpen,
-  setImage,
-  alt,
-  description,
-  urls,
-  likes,
-  id,
-}) => {
+const ImageCard: FC<ImageCardProps> = ({ onModalOpen, alt, urls, id }) => {
   return (
     <div className={css.wrapper}>
       <img
@@ -22,7 +15,5 @@ const ImageCard = ({
     </div>
   );
 };
-
-ImageCard.propTypes = {};
 
 export default ImageCard;
