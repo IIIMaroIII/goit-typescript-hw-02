@@ -15,9 +15,7 @@ function App() {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [selectedImage, setSelectedImage] = useState<ImageCardProps | null>(
-    null
-  );
+  const [selectedImage, setSelectedImage] = useState(null);
   const [items, setItems] = useState<ImageCardProps[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
