@@ -1,6 +1,7 @@
 export interface ImageCardProps {
-  onModalOpen: () => void;
-  alt?: string;
+  onModalOpen?: () => void;
+  id: string;
+  alt: string | undefined;
   urls: {
     full: string;
     small: string;
@@ -9,5 +10,4 @@ export interface ImageCardProps {
     thumb?: string;
     small_s3?: string;
   };
-  id: string;
 }

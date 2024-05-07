@@ -1,27 +1,31 @@
-import { useState, useEffect } from 'react';
+import { useEffect, FC, KeyboardEvent } from "react";
 
-import css from './errorMessage.module.css';
-import Button from '../reusable/Button/Button';
-import { IoMdClose } from 'react-icons/io';
-import clsx from 'clsx';
+import css from "./errorMessage.module.css";
+import Button from "../reusable/Button/Button";
+import { IoMdClose } from "react-icons/io";
+import clsx from "clsx";
+import { ErrorMessageProps } from "./errorMessage.types";
 
-const ErrorMessage = ({ close, children }) => {
-  const closeModalByEsc = e => {
-    if (e.code === 'Escape') {
-      close();
-    }
-  };
-  const closeModalByClick = e => {
+const ErrorMessage: FC<ErrorMessageProps> = ({ close, children }) => {
+  const closeModalByClick = (e: MouseEvent) => {
     if (e.target === e.currentTarget) {
       close();
     }
   };
+
   useEffect(() => {
-    window.addEventListener('keydown', closeModalByEsc);
-    return () => {
-      window.removeEventListener('keydown', closeModalByEsc);
+    const closeModalByEsc: EventListener = (
+      e: KeyboardEvent<HTMLDivElement>
+    ) => {
+      if (e.code === "Escape") {
+        close();
+      }
     };
-  }, []);
+    window.addEventListener("keydown", closeModalByEsc);
+    return () => {
+      window.removeEventListener("keydown", closeModalByEsc);
+    };
+  }, [close]);
   return (
     <div className={clsx(css.wrapper, css.wrapperLoad)}>
       <p className={css.text}>{children}</p>
@@ -31,7 +35,5 @@ const ErrorMessage = ({ close, children }) => {
     </div>
   );
 };
-ErrorMessage.defaultProps = { close: () => {} };
-ErrorMessage.propTypes = {};
 
 export default ErrorMessage;

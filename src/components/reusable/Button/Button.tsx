@@ -1,11 +1,9 @@
-import PropTypes from 'prop-types';
-
 const Button = ({
-  className,
+  className = "",
   children,
-  type,
-  onClick,
-  disabled,
+  type = "button",
+  onClick = () => {},
+  disabled = false,
   ...restProps
 }) => {
   return (
@@ -20,14 +18,5 @@ const Button = ({
     </button>
   );
 };
-
-Button.defaultProps = {
-  type: 'button',
-  onClick: () => {},
-  disabled: false,
-  // Fix className prop
-  className: '',
-};
-Button.propTypes = {};
 
 export default Button;
