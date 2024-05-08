@@ -4,15 +4,21 @@ import { IoMdClose } from "react-icons/io";
 
 import Button from "../reusable/Button/Button";
 import css from "./imageModal.module.css";
+import { FC } from "react";
+import { ImageModalProps } from "./ImageModal.types";
 
 ReactModal.setAppElement("#modal-root");
 
-const ImageModal = ({ children, showModal, toggleModal }) => {
+const ImageModal: FC<ImageModalProps> = ({
+  children,
+  showModal,
+  toggleModal,
+}) => {
   return (
     <ReactModal
       isOpen={showModal}
       parentSelector={() => {
-        return document.getElementById("modal-root");
+        return document.getElementById("modal-root") as HTMLElement;
       }}
       shouldCloseOnEsc={true}
       shouldCloseOnOverlayClick={true}
@@ -20,14 +26,14 @@ const ImageModal = ({ children, showModal, toggleModal }) => {
       onRequestClose={toggleModal}
       className={css.content}
     >
-      <Button className={css.btn} onClick={() => toggleModal()}>
-        <IoMdClose className={css.icon} />
-      </Button>
-      {children}
+      <>
+        <Button className={css.btn} onClick={() => toggleModal()}>
+          <IoMdClose className={css.icon} />
+        </Button>
+        {children}
+      </>
     </ReactModal>
   );
 };
-
-ImageModal.propTypes = {};
 
 export default ImageModal;

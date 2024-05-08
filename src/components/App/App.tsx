@@ -1,25 +1,28 @@
 import { useState, useEffect, ReactElement } from "react";
-import Loader from "./components/Loader/Loader";
-import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
-import API from "./components/services/API";
-import SearchBar from "./components/SearchBar/SearchBar";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
-import ImageCard from "./components/ImageGallery/ImageCard/ImageCard";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import Loader from "../Loader/Loader";
+import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
+import API from "../services/API";
+import SearchBar from "../SearchBar/SearchBar";
+import ImageGallery from "../ImageGallery/ImageGallery";
+import ImageCard from "../ImageGallery/ImageCard/ImageCard";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./App.css";
-import ImageModal from "./components/ImageModal/ImageModal";
-import { ImageCardProps } from "./components/ImageGallery/ImageCard/ImageCard.types";
+import ImageModal from "../ImageModal/ImageModal";
+import { AppErrorState, AppItemsState } from "./App.types";
 
 function App() {
-  const [error, setError] = useState<{ message: string } | null>(null);
+  const [error, setError] = useState<AppErrorState | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [items, setItems] = useState<ImageCardProps[]>([]);
+  const [selectedImage, setSelectedImage] = useState<Pick<
+    AppItemsState,
+    "id" | "alt_description" | "urls"
+  > | null>(null);
+  const [items, setItems] = useState<AppItemsState[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState<string>("");
 
   const toggleModal = (): void => {
     setShowModal(!showModal);

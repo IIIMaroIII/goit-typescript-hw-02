@@ -13,8 +13,10 @@ const SearchBar: FC<SearchBarProps> = ({ onSearch }) => {
 
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const inputValue = e.target.elements.search.value.trim().toLowerCase();
-    onSearch(inputValue);
+    const inputValue = (e.target as HTMLFormElement).elements.namedItem(
+      "search"
+    ) as HTMLInputElement;
+    onSearch(inputValue.value);
   };
   return (
     <>

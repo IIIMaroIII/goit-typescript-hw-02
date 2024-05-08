@@ -1,4 +1,7 @@
-const Button = ({
+import { FC } from "react";
+import { ButtonProps } from "./Button.types";
+
+const Button: FC<ButtonProps> = ({
   className = "",
   children,
   type = "button",
