@@ -8,17 +8,19 @@ import ImageCard from "../ImageGallery/ImageCard/ImageCard";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import "./App.css";
 import ImageModal from "../ImageModal/ImageModal";
-import { AppErrorState, AppItemsState } from "./App.types";
+import {
+  AppErrorState,
+  AppItemsState,
+  AppSelectedImageState,
+} from "./App.types";
 
 function App() {
   const [error, setError] = useState<AppErrorState | null>(null);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const [selectedImage, setSelectedImage] = useState<Pick<
-    AppItemsState,
-    "id" | "alt_description" | "urls"
-  > | null>(null);
+  const [selectedImage, setSelectedImage] =
+    useState<AppSelectedImageState | null>(null);
   const [items, setItems] = useState<AppItemsState[]>([]);
   const [page, setPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(0);

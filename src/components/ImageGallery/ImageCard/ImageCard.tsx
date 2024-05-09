@@ -2,7 +2,12 @@ import { FC } from "react";
 import css from "./imageCard.module.css";
 import { ImageCardProps } from "./ImageCard.types";
 
-const ImageCard: FC<ImageCardProps> = ({ onModalOpen, alt, urls, id }) => {
+const ImageCard: FC<ImageCardProps> = ({
+  onModalOpen,
+  alt_description,
+  urls,
+  id,
+}) => {
   return (
     <div className={css.wrapper}>
       <img
@@ -10,7 +15,7 @@ const ImageCard: FC<ImageCardProps> = ({ onModalOpen, alt, urls, id }) => {
         id={id}
         className={css.image}
         src={!onModalOpen ? `${urls.full}` : `${urls.small}`}
-        alt={alt}
+        alt={alt_description}
       />
     </div>
   );

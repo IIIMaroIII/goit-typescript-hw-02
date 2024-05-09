@@ -1,4 +1,4 @@
-import { useEffect, FC, KeyboardEvent } from "react";
+import { useEffect, FC, KeyboardEvent, ReactElement } from "react";
 
 import css from "./errorMessage.module.css";
 import Button from "../reusable/Button/Button";
@@ -12,20 +12,18 @@ const ErrorMessage: FC<ErrorMessageProps> = ({ close, children }) => {
       close();
     }
   };
+  // const closeModalByEsc: EventListener = (e: KeyboardEvent<HTMLDivElement>) => {
+  //   if (e.code === "Escape") {
+  //     close();
+  //   }
+  // };
 
-  useEffect(() => {
-    const closeModalByEsc: EventListener = (
-      e: KeyboardEvent<HTMLDivElement>
-    ) => {
-      if (e.code === "Escape") {
-        close();
-      }
-    };
-    window.addEventListener("keydown", closeModalByEsc);
-    return () => {
-      window.removeEventListener("keydown", closeModalByEsc);
-    };
-  }, [close]);
+  // useEffect(() => {
+  //   window.addEventListener("keydown", closeModalByEsc);
+  //   return () => {
+  //     window.removeEventListener("keydown", closeModalByEsc);
+  //   };
+  // }, []);
   return (
     <div className={clsx(css.wrapper, css.wrapperLoad)}>
       <p className={css.text}>{children}</p>

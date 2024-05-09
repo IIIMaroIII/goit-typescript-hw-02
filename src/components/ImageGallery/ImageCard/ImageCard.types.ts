@@ -1,13 +1,5 @@
-export interface ImageCardProps {
+import { AppSelectedImageState } from "../../App/App.types";
+
+export interface ImageCardProps extends AppSelectedImageState {
   onModalOpen?: () => void;
-  id: string;
-  alt: string;
-  urls: {
-    full: string;
-    small: string;
-    raw?: string;
-    regular?: string;
-    thumb?: string;
-    small_s3?: string;
-  };
 }

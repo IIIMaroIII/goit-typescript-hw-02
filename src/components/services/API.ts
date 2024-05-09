@@ -18,8 +18,11 @@ const API: APIFunction = async (value, page, onError) => {
     });
     const response = await axios.get("/search/photos");
     return response.data;
-  } catch (error) {
-    onError({ message: error.message });
+  } catch (e: unknown) {
+    if (!(e instanceof ErrorEvent)) {
+      throw e;
+    }
+    onError({ message: e.message });
   }
 };
 

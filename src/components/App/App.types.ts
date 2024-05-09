@@ -1,5 +1,5 @@
 export interface AppItemsState {
-  id: string;
+  id: string | undefined;
   slug: string;
   alternative_slugs: object;
   created_at: string;
@@ -10,7 +10,7 @@ export interface AppItemsState {
   color: string;
   blur_hash: string;
   description: string;
-  alt_description: string;
+  alt_description: string | undefined;
   breadcrumbs: [];
   urls: {
     full: string;
@@ -33,4 +33,17 @@ export interface AppItemsState {
 
 export interface AppErrorState {
   message: string;
+}
+
+export interface AppSelectedImageState {
+  id: string | undefined;
+  alt_description?: string;
+  urls: {
+    full: string;
+    small: string;
+    raw?: string;
+    regular?: string;
+    thumb?: string;
+    small_s3?: string;
+  };
 }
