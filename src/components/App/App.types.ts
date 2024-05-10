@@ -1,5 +1,5 @@
 export interface AppItemsState {
-  id: string | undefined;
+  id: string;
   slug: string;
   alternative_slugs: object;
   created_at: string;
@@ -10,7 +10,7 @@ export interface AppItemsState {
   color: string;
   blur_hash: string;
   description: string;
-  alt_description: string | undefined;
+  alt_description: string;
   breadcrumbs: [];
   urls: {
     full: string;
@@ -35,15 +35,20 @@ export interface AppErrorState {
   message: string;
 }
 
-export interface AppSelectedImageState {
-  id: string | undefined;
-  alt_description?: string;
-  urls: {
-    full: string;
-    small: string;
-    raw?: string;
-    regular?: string;
-    thumb?: string;
-    small_s3?: string;
-  };
-}
+// export interface AppSelectedImageState {
+//   id: string;
+//   alt_description: string;
+//   urls: {
+//     full: string;
+//     small: string;
+//     raw?: string;
+//     regular?: string;
+//     thumb?: string;
+//     small_s3?: string;
+//   };
+// }
+
+export type AppSelectedImageState = Pick<
+  AppItemsState,
+  "alt_description" | "id" | "urls"
+>;
