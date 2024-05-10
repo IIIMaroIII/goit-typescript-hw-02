@@ -14,6 +14,7 @@ import {
 } from "./App.types";
 
 import "./App.css";
+import ImageModal from "../ImageModal/ImageModal";
 
 function App() {
   const [error, setError] = useState<AppErrorState | null>(null);
@@ -111,7 +112,15 @@ function App() {
           </div>
         </div>
       )}
-      {selectedImage && <ImageCard {...selectedImage} />}
+      {showModal && (
+        <ImageModal showModal={showModal} toggleModal={toggleModal}>
+          <ImageCard
+            id={selectedImage?.id || ""}
+            urls={selectedImage?.urls || { full: "", small: "" }}
+            alt_description={selectedImage?.alt_description || ""}
+          />
+        </ImageModal>
+      )}
     </>
   );
 }

@@ -50,5 +50,5 @@ export interface AppErrorState {
 
 export type AppSelectedImageState = Pick<
   AppItemsState,
-  "alt_description" | "id" | "urls"
+  "id" | "urls" | "alt_description"
 >;

@@ -4,9 +4,9 @@ import { ImageCardProps } from "./ImageCard.types";
 
 const ImageCard: FC<ImageCardProps> = ({
   onModalOpen,
-  alt_description,
-  urls,
   id,
+  urls,
+  alt_description,
 }) => {
   return (
     <div className={css.wrapper}>

@@ -1,5 +1,4 @@
 import ReactModal from "react-modal";
-// import { createPortal } from 'react-dom';
 import { IoMdClose } from "react-icons/io";
 
 import Button from "../reusable/Button/Button";
