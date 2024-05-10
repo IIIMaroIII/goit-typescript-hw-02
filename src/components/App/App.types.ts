@@ -35,19 +35,6 @@ export interface AppErrorState {
   message: string;
 }
 
-// export interface AppSelectedImageState {
-//   id: string;
-//   alt_description: string;
-//   urls: {
-//     full: string;
-//     small: string;
-//     raw?: string;
-//     regular?: string;
-//     thumb?: string;
-//     small_s3?: string;
-//   };
-// }
-
 export type AppSelectedImageState = Pick<
   AppItemsState,
   "id" | "urls" | "alt_description"
