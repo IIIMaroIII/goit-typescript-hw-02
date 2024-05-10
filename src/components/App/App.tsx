@@ -1,4 +1,5 @@
 import { useState, useEffect, ReactElement } from "react";
+
 import Loader from "../Loader/Loader";
 import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import API from "../services/API";
@@ -6,13 +7,13 @@ import SearchBar from "../SearchBar/SearchBar";
 import ImageGallery from "../ImageGallery/ImageGallery";
 import ImageCard from "../ImageGallery/ImageCard/ImageCard";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
-import "./App.css";
-import ImageModal from "../ImageModal/ImageModal";
 import {
   AppErrorState,
   AppItemsState,
   AppSelectedImageState,
 } from "./App.types";
+
+import "./App.css";
 
 function App() {
   const [error, setError] = useState<AppErrorState | null>(null);
@@ -110,11 +111,7 @@ function App() {
           </div>
         </div>
       )}
-      {showModal && (
-        <ImageModal showModal={showModal} toggleModal={toggleModal}>
-          <ImageCard {...selectedImage} />
-        </ImageModal>
-      )}
+      {selectedImage && <ImageCard {...selectedImage} />}
     </>
   );
 }

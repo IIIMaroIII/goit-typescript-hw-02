@@ -10,7 +10,6 @@ const ImageGallery: FC<ImageGalleryProps> = ({
 }) => {
   const handleSelectedImages = (
     id: string,
-    alt_description: string,
     urls: {
       full: string;
       small: string;
@@ -18,10 +17,11 @@ const ImageGallery: FC<ImageGalleryProps> = ({
       regular?: string;
       thumb?: string;
       small_s3?: string;
-    }
+    },
+    alt_description?: string | undefined
   ): void => {
     toggleModal();
-    setImage({ id, alt_description, urls });
+    setImage({ id, urls, alt_description });
   };
 
   return (
@@ -29,7 +29,7 @@ const ImageGallery: FC<ImageGalleryProps> = ({
       {data.map(({ id, alt_description, urls, ...restArgs }) => {
         return (
           <li
-            onClick={() => handleSelectedImages(id, alt_description, urls)}
+            onClick={() => handleSelectedImages(id, urls, alt_description)}
             key={id}
             className={css.item}
           >

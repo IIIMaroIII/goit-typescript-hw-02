@@ -10,7 +10,7 @@ export interface AppItemsState {
   color: string;
   blur_hash: string;
   description: string;
-  alt_description: string;
+  alt_description?: string | undefined;
   breadcrumbs: [];
   urls: {
     full: string;
